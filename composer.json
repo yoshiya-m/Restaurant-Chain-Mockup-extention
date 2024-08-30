@@ -1,0 +1,14 @@
+{
+    "require": {
+        "fakerphp/faker": "^1.23"
+    },
+    "authoload": {
+        "psr-4": {
+            "Models\\":"Models/",
+            "Companies\\":"Companies/",
+            "Companies\\Restaurants\\":"Companies/Restaurants/",
+            "Interfaces\\":"Interfaces/",
+            "generator\\":""
+        }
+    }
+}
