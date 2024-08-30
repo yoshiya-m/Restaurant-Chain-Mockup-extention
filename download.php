@@ -7,7 +7,7 @@ require_once 'RandomGenerator.php';
 require_once 'Companies/Company.php';
 require_once 'Companies/Restaurants/RestaurantChain.php';
 require_once 'Companies/Restaurants/RestaurantLocation.php';
-// require 'vendor/autoload.php'; // Composer のオートローダーを読み込む
+
 
 use Companies\Restaurants\RestaurantChain;
 use generator\RandomGenerator;
@@ -74,33 +74,21 @@ if (!in_array($format, $allowedFormats)) {
 }
 
 // レストランチェーンを作成
-// 指定できる引数だけ受け付ける zipcode,salaryなど。それ以外はrandomのまま
+
 $restaurantChain = RestaurantChain::randomGenerator($employeeCount, $salaryMin, $salaryMax, $locationCount, $zipCodeMin, $zipCodeMax);
-
-
-// 値を引数で渡す必要あり
-
-// ユーザーを作成
-$users = RandomGenerator::users($count, $count);
 
 if ($format === 'markdown') {
     header('Content-Type: text/markdown');
     header('Content-Disposition: attachment; filename="users.md"');
-    // foreach ($users as $user) {
-    //     echo $user->toMarkdown();
-    // }
     echo $restaurantChain->toMarkdown();
 } elseif ($format === 'json') {
     header('Content-Type: application/json');
     header('Content-Disposition: attachment; filename="users.json"');
-    // $usersArray = array_map(fn($user) => $user->toArray(), $users);
+ 
     echo json_encode($restaurantChain->toArray());
 } elseif ($format === 'txt') {
     header('Content-Type: text/plain');
     header('Content-Disposition: attachment; filename="users.txt"');
-    // foreach ($users as $user) {
-    //     echo $user->toString();
-    // }
     echo $restaurantChain->toString();
 } else {
     // HTML をデフォルトに
@@ -122,9 +110,7 @@ if ($format === 'markdown') {
 
     </html><div class="container">' . 
     $restaurantChain->toHTML() . "</div>";
-    // foreach ($users as $user) {
-    //     echo $user->toHTML();
-    // }
+
     echo $output;
 }
 
