@@ -1,0 +1,52 @@
+> 流れ
+  > サーバーでレポジトリをクローン
+  > userlorem.yoshm.com　サブドメインを作成する
+  
+★一旦操作まとめる
+
+> ディレクトリ構成
+  > /etc/nginx/
+    |
+    |--- sites-available (設定ファイルがある)
+    |      |
+    |       |--- yoshm.com
+    |       |--- userlorem.com
+    |       |--- deepsea.yoshm.com
+    |
+    |
+    |--- sites-enabled (実際に使用する設定へのリンク)
+    |     |
+    |     |-- (links to sites-available)
+    |     
+    |
+  
+  > /var/www/ (コードがあるフォルダへのリンクをおく)
+    |
+    |--- Restaurant-Chain-Mockup-extention
+    |     |-- public 
+    |         |--- link to /home/ubuntu/web/Restaurant-Chain-Mockup-extention/
+    |--- project-deepsea
+ 　 |     |-- public 
+    |         |--- link to /home/ubuntu/web/project-deepsea-website/
+    |　　　
+    |--- portfolio-website
+    |     |-- public 
+    |         |--- link to /home/ubuntu/web/portfolio-website/
+
+  > /home/ubuntu/web/ (実際のコードをおく)
+    |--- Restaurant-Chain-Mockup-extention
+    |     |--- (files)
+    |---  portfolio-website
+    |     |--- (files)
+    |--- project-deepsea-website
+    |     |--- (files)    
+
+> 本番環境へのデプロイ
+  > webディレクトリ配下にgit clone
+  > var/www/Restaurant-chain/public フォルダを作成
+  > シンボリックリンクを作成
+  > sudo nano /etc/nginx/sites-available/default でnginxの設定ファイルを開く
+
+
+  > フォルダ配置
+    > 
